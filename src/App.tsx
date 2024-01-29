@@ -1,23 +1,28 @@
-import Navigation from "./components/Navigation";
-import  Container  from "react-bootstrap/Container";
+import { useState } from 'react';
+import Navigation from './components/Navigation';
+import Container from 'react-bootstrap/Container';
+import Home from './views/Home';
+
 
 
 export default function App(){
-  const username:string = 'kadeejag';
-  const isLoggedIn:boolean = false;
 
-const posts: {id:number, title:string}[] = [
-      {id: 1, title: 'Happy Monday!'},
-      {id: 2, title: 'React rules!'},
-      {id: 3, title: 'How was your weekend?'}
-]
-  return (
-    <div>
-      <Navigation isLoggedIn={isLoggedIn} />
-      <Container>
-          <h1>{ isLoggedIn ? 'Hello ' + username : 'Hello and Welcome' }</h1>
-        { posts.map( p =>  <h4 key={p.id}>{p.title}</h4> ) }
-        </Container>
-    </div> 
-  )
-}
+    // const isLoggedIn:boolean = true;
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // console.log(isLoggedIn);
+    // console.log(typeof setIsLoggedIn);
+
+    const handleClick = () => {
+        // console.log('The button has been clicked!');
+        setIsLoggedIn(!isLoggedIn)
+    }
+
+    return (
+        <div>
+            <Navigation isLoggedIn={isLoggedIn} />
+            <Container>
+                <Home isLoggedIn={isLoggedIn} handleClick={handleClick} />
+            </Container>
+        </div>
+    )
+  }
