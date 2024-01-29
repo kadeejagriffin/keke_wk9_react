@@ -1,10 +1,20 @@
+import Navigation from "./components/Navigation";
 
 
 export default function App(){
+  const username:string = 'kaddejag';
+  const isLoggedIn:boolean = true;
+
+const posts: {id:number, title:string}[] = [
+      {id: 1, title: 'Happy Monday!'},
+      {id: 2, title: 'React rules!'},
+      {id: 3, title: 'How was your weekend?'}
+]
   return (
     <div>
-    <h1>Hello World </h1>
-    <h4>By Kadeeja Griffin</h4>
-    </div>
+      <Navigation isLoggedIn={isLoggedIn} />
+        <h1>{ isLoggedIn ? 'Hello ' + username : 'Hello and Welcome' }</h1>
+        { posts.map( p =>  <h4 key={p.id}>{p.title}</h4> ) }
+    </div> 
   )
 }
