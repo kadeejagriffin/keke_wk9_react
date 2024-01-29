@@ -1,9 +1,10 @@
 import Navigation from "./components/Navigation";
+import  Container  from "react-bootstrap/Container";
 
 
 export default function App(){
-  const username:string = 'kaddejag';
-  const isLoggedIn:boolean = true;
+  const username:string = 'kadeejag';
+  const isLoggedIn:boolean = false;
 
 const posts: {id:number, title:string}[] = [
       {id: 1, title: 'Happy Monday!'},
@@ -13,8 +14,10 @@ const posts: {id:number, title:string}[] = [
   return (
     <div>
       <Navigation isLoggedIn={isLoggedIn} />
-        <h1>{ isLoggedIn ? 'Hello ' + username : 'Hello and Welcome' }</h1>
+      <Container>
+          <h1>{ isLoggedIn ? 'Hello ' + username : 'Hello and Welcome' }</h1>
         { posts.map( p =>  <h4 key={p.id}>{p.title}</h4> ) }
+        </Container>
     </div> 
   )
 }
